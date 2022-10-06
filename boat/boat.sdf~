@@ -929,7 +929,6 @@
     </plugin>
     
     <plugin name="rudder_1_drag" filename="libLiftDragPlugin.so">
-    	<robotNamespace/>
       <a0>0.191986</a0>
       <cla>0.1</cla>
       <cda>0.0625</cda>
@@ -947,7 +946,6 @@
     </plugin>
     
     <plugin name="rudder_2_drag" filename="libLiftDragPlugin.so">
-      <robotNamespace/>
       <a0>0.191986</a0>
       <cla>0.1</cla>
       <cda>0.0625</cda>
