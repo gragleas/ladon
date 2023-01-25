@@ -1,0 +1,3 @@
+[submodule "asv_wave_sim"]
+	path = asv_wave_sim
+	url = https://github.com/gragleas/asv_wave_sim.git
