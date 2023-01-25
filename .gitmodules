@@ -1,9 +1,3 @@
-[submodule "asv_wave_sim"]
-	path = asv_wave_sim
-	url = https://github.com/gragleas/asv_wave_sim.git
 [submodule "PX4-Autopilot"]
 	path = PX4-Autopilot
 	url = https://github.com/gragleas/PX4-Autopilot.git
-[submodule "colcon_ws/src"]
-	path = colcon_ws/src
-	url = https://github.com/gragleas/asv_wave_sim.git
