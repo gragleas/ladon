@@ -351,7 +351,7 @@
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
-          <spring_stiffness>1</spring_stiffness>
+          <spring_stiffness>0</spring_stiffness>
           <damping>1.000</damping>
         </dynamics>
       </axis>
@@ -368,7 +368,7 @@
         </limit>
         <dynamics>
           <spring_reference>0</spring_reference>
-          <spring_stiffness>1</spring_stiffness>
+          <spring_stiffness>0</spring_stiffness>
           <damping>1.000</damping>
         </dynamics>
       </axis>

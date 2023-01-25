@@ -81,7 +81,7 @@
       	<pose>0 2.29 0.25 1.57 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>/home/graham/Downloads/port.dae</uri>
+            <uri>/home/graham/Downloads/meshes/port.dae</uri>
           </mesh>
           <material><texture filename="/home/graham/Downloads/port_Base_Color.png"/></material>
         </geometry>
@@ -90,7 +90,7 @@
       	<pose>0 0.23 0.25 1.57 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>/home/graham/Downloads/port.dae</uri>
+            <uri>/home/graham/Downloads/meshes/port.dae</uri>
           </mesh>
           <material><texture filename="/home/graham/Downloads/port_Base_Color.png"/></material>
         </geometry>
@@ -155,7 +155,7 @@
       	<pose>1.776 0 0.85 1.57 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>/home/graham/Downloads/scaled_trampoline.dae</uri>
+            <uri>/home/graham/Downloads/meshes/scaled_trampoline.dae</uri>
           </mesh>
           <material><texture filename="/home/graham/Downloads/scaled_trampoline_Base_Color.png"/></material>
         </geometry>
@@ -196,7 +196,7 @@
       	<pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>/home/graham/Downloads/rudder.dae</uri>
+            <uri>/home/graham/Downloads/meshes/rudder.dae</uri>
           </mesh>
           <material><texture filename="/home/graham/Downloads/rudder_Base_Color.png"/></material>
         </geometry>
@@ -276,7 +276,7 @@
       	<pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>/home/graham/Downloads/rudder.dae</uri>
+            <uri>/home/graham/Downloads/meshes/rudder.dae</uri>
           </mesh>
           <material><texture filename="/home/graham/Downloads/rudder_Base_Color.png"/></material>
         </geometry>
