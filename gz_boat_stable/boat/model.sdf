@@ -1,0 +1,572 @@
+<?xml version='1.0'?>
+<sdf version='1.7'>
+  <model name='boat_0'>
+    <!-- The trampoline frame is the base link that everything else is attached to -->
+    <enable_lockstep>true</enable_lockstep>
+    <link name='base_link'>
+      <pose>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>180</mass>
+        <inertia>
+          <ixx>120</ixx>
+          <ixy>0</ixy>
+          <iyy>393</iyy>
+          <iyz>0</iyz>
+          <izz>446</izz>
+        </inertia>
+      </inertial>
+      <self_collide>0</self_collide>
+      <enable_wind>1</enable_wind>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+      
+      <!-- Many parts aren't separate links -->
+      <!-- due to the fact that fixed joints cause problems -->
+      
+      <!-- Motor mount poles, jusy cylinders for simplicity -->
+      <visual name='prop_mount_2_visual'>
+        <pose>4.325 1.93 0.82 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.03</radius>
+            <length>0.64</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <lighting>1</lighting>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+          <shader type='pixel'>
+            <normal_map>__default__</normal_map>
+          </shader>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+          <specular>0.01 0.01 0.01 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <visual name='prop_mount_1_visual'>
+        <pose>4.325 1 0.82 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.03</radius>
+            <length>0.64</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <lighting>1</lighting>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+          <shader type='pixel'>
+            <normal_map>__default__</normal_map>
+          </shader>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+          <specular>0.01 0.01 0.01 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      
+      <!-- Yellow covers for the hulls, just for aesthetics -->
+      <visual name="starboard_hull_cover_visual">
+      	<pose>0 2.29 0.25 1.57 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>/home/graham/Downloads/port.dae</uri>
+          </mesh>
+          <material><texture filename="/home/graham/Downloads/port_Base_Color.png"/></material>
+        </geometry>
+      </visual>
+      <visual name="port_hull_cover_visual">
+      	<pose>0 0.23 0.25 1.57 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>/home/graham/Downloads/port.dae</uri>
+          </mesh>
+          <material><texture filename="/home/graham/Downloads/port_Base_Color.png"/></material>
+        </geometry>
+      </visual>
+      
+      <!-- Hulls, no inertia/buoyancy currently due to some kinks in the buoyancy -->
+      <!-- and water level interactions. This can be fixed as there is an old stable -->
+      <!-- version, but for now the hulls' physical properties are "attached" to the tramp -->
+      <visual name='starboard_hull_visual'>
+        <pose>-0.002 2.473 0.3 1.57 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>/home/graham/Downloads/meshes/starboard_hull.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <lighting>1</lighting>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Red</name>
+          </script>
+          <shader type='pixel'>
+            <normal_map>__default__</normal_map>
+          </shader>
+          <ambient>0.5 0 0 1</ambient>
+          <diffuse>0.5 0 0 1</diffuse>
+          <specular>0.01 0.01 0.01 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <visual name='port_hull_visual'>
+        <pose>0.012 0.235 0.25 1.57 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>/home/graham/Downloads/meshes/port_hull.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <lighting>1</lighting>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Red</name>
+          </script>
+          <shader type='pixel'>
+            <normal_map>__default__</normal_map>
+          </shader>
+          <ambient>0.5 0 0 1</ambient>
+          <diffuse>0.5 0 0 1</diffuse>
+          <specular>0.01 0.01 0.01 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>1.00
+      
+      <!-- Tramp visuals -->
+      <visual name="scaled_trampoline_visual">
+      	<pose>1.776 0 0.85 1.57 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>/home/graham/Downloads/scaled_trampoline.dae</uri>
+          </mesh>
+          <material><texture filename="/home/graham/Downloads/scaled_trampoline_Base_Color.png"/></material>
+        </geometry>
+      </visual>
+      <collision name="base_collision">
+        <geometry>
+          <mesh>
+            <uri>/home/graham/gz_ws/src/asv_wave_sim/gz-waves-models/models/wam-v/meshes/WAM-V-Base.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <sensor name="imu_sensor" type="imu">
+        <always_on>1</always_on>
+        <update_rate>250</update_rate>
+        <pose>0 0 0 0 0 1.57</pose>
+      </sensor>
+    </link>
+    
+    <link name='rudder_1'>
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.01</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.12425</iyy>
+          <iyz>0</iyz>
+          <izz>0.11475</izz>
+        </inertia>
+        <pose>0.5 0.015 0.1 0 -0 0</pose>
+      </inertial>
+      <pose>5.10241 0.426855 0 0.011924 -1.55249 -3.12692</pose>
+      <gravity>1</gravity>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <enable_wind>1</enable_wind>
+      <visual name="rudder_1_visual">
+      	<pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>/home/graham/Downloads/rudder.dae</uri>
+          </mesh>
+          <material><texture filename="/home/graham/Downloads/rudder_Base_Color.png"/></material>
+        </geometry>
+      </visual>
+      <collision name='collision'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>/home/graham/Downloads/meshes/rudder.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <patch_radius>0</patch_radius>
+              <surface_radius>0</surface_radius>
+              <use_patch_radius>1</use_patch_radius>
+              <ode>
+                <slip>0</slip>
+              </ode>
+            </torsional>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0</restitution_coefficient>
+            <threshold>1e+06</threshold>
+          </bounce>
+          <contact>
+            <collide_without_contact>0</collide_without_contact>
+            <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+            <collide_bitmask>1</collide_bitmask>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0</min_depth>
+            </ode>
+            <bullet>
+              <split_impulse>1</split_impulse>
+              <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+            </bullet>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+    <link name='rudder_2'>
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.01</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.12425</iyy>
+          <iyz>0</iyz>
+          <izz>0.11475</izz>
+        </inertia>
+        <pose>0.5 0.015 0.1 0 -0 0</pose>
+      </inertial>
+      <pose>5.1144 2.47458 0 0.011924 -1.55249 -3.12692</pose>
+      <visual name="rudder_2_visual">
+      	<pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>/home/graham/Downloads/rudder.dae</uri>
+          </mesh>
+          <material><texture filename="/home/graham/Downloads/rudder_Base_Color.png"/></material>
+        </geometry>
+      </visual>
+      <collision name='collision'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>/home/graham/Downloads/meshes/rudder.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <patch_radius>0</patch_radius>
+              <surface_radius>0</surface_radius>
+              <use_patch_radius>1</use_patch_radius>
+              <ode>
+                <slip>0</slip>
+              </ode>
+            </torsional>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0</restitution_coefficient>
+            <threshold>1e+06</threshold>
+          </bounce>
+          <contact>
+            <collide_without_contact>0</collide_without_contact>
+            <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+            <collide_bitmask>1</collide_bitmask>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0</min_depth>
+            </ode>
+            <bullet>
+              <split_impulse>1</split_impulse>
+              <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+            </bullet>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+    
+    <joint name='px4_servo_0' type='revolute'>
+      <parent>base_link</parent>
+      <child>rudder_1</child>
+      <pose>0.85 0.02 0 0 -0 0</pose>
+      <axis>
+        <xyz>0.96 0 0</xyz>
+        <limit>
+        	<upper>0.53</upper>
+        	<lower>-0.53</lower>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+          <damping>1.000</damping>
+        </dynamics>
+      </axis>
+    </joint>
+    <joint name='px4_servo_1' type='revolute'>
+      <parent>base_link</parent>
+      <child>rudder_2</child>
+      <pose>0.85 0.02 0 0 -0 0</pose>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+        	<upper>0.53</upper>
+        	<lower>-0.53</lower>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+          <damping>1.000</damping>
+        </dynamics>
+      </axis>
+    </joint>
+    
+    <plugin filename="gz-sim-lift-drag-system" name="gz::sim::systems::LiftDrag">
+      <a0>0</a0>
+      <cla>0.1</cla>
+      <cda>0.2</cda>
+      <cma>0.0</cma>
+      <alpha_stall>0.471239</alpha_stall>
+      <cla_stall>-0.666666</cla_stall>
+      <cda_stall>0.00275</cda_stall>
+      <cma_stall>0</cma_stall>
+      <cp>0.5 0.02 0.12</cp>
+      <area>0.354</area>
+      <air_density>997</air_density>
+      <forward>0 0 -1</forward>
+      <upward>1 0 0</upward>
+      <link_name>base_link</link_name>
+      <control_joint_name>px4_servo_0</control_joint_name>
+      <control_joint_rad_to_cl>0.8</control_joint_rad_to_cl>
+    </plugin>
+    <plugin
+      filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+      <joint_name>px4_servo_0</joint_name>
+    </plugin>
+    
+    <plugin filename="gz-sim-lift-drag-system" name="gz::sim::systems::LiftDrag">
+      <a0>0</a0>
+      <cla>0.1</cla>
+      <cda>0.2</cda>
+      <cma>0.0</cma>
+      <alpha_stall>0.471239</alpha_stall>
+      <cla_stall>-0.666666</cla_stall>
+      <cda_stall>0.00275</cda_stall>
+      <cma_stall>0</cma_stall>
+      <cp>0.5 0.02 0.12</cp>
+      <area>0.354</area>
+      <air_density>997</air_density>
+      <forward>0 0 -1</forward>
+      <upward>1 0 0</upward>
+      <link_name>base_link</link_name>
+      <control_joint_name>px4_servo_1</control_joint_name>
+      <control_joint_rad_to_cl>0.8</control_joint_rad_to_cl>
+    </plugin>
+    <plugin
+      filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+      <joint_name>px4_servo_1</joint_name>
+    </plugin>
+    
+    <link name='wing_1'>
+      <pose>2.47482 2.49991 0.615342 1.57 0 3.14</pose>
+      <inertial>
+        <pose>.4 3.25 0 0 -0 0</pose>
+        <mass>20</mass>
+        <inertia>
+          <ixx>46.89045</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.7065</iyy>
+          <iyz>0</iyz>
+          <izz>47.4867</izz>
+        </inertia>
+      </inertial>
+      <visual name="visual">
+      	<pose>0 0.5 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>/home/graham/Downloads/meshes/wing.dae</uri>
+          </mesh>
+          <material><texture filename="/home/graham/Downloads/meshes/wing.png"/></material>
+        </geometry>
+      </visual>
+    </link>
+    
+    <link name='wing_2'>
+      <pose>4.51199 2.49807 0.615342 1.57 0 3.14</pose>
+      <inertial>
+        <pose>.4 3.25 0 0 -0 0</pose>
+        <mass>20</mass>
+        <inertia>
+          <ixx>46.89045</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.7065</iyy>
+          <iyz>0</iyz>
+          <izz>47.4867</izz>
+        </inertia>
+      </inertial>
+      <visual name="visual">
+      	<pose>0 0.5 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>/home/graham/Downloads/meshes/wing.dae</uri>
+          </mesh>
+          <material><texture filename="/home/graham/Downloads/meshes/wing.png"/></material>
+        </geometry>
+      </visual>
+    </link>
+    
+    <!--  ################## JOINTS ###################### -->
+    <joint name='base_link_wing_1' type='revolute'>
+      <parent>base_link</parent>
+      <child>wing_1</child>
+      <pose>0.305 0 0 0 -0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    
+    <joint name='base_link_wing_2' type='revolute'>
+      <parent>base_link</parent>
+      <child>wing_2</child>
+      <pose>0.305 0 0 0 -0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    
+    <plugin filename="ignition-gazebo-multicopter-motor-model-system" name="gz::sim::systems::MulticopterMotorModel">
+      <jointName>base_link_wing_1</jointName>
+      <linkName>wing_1</linkName>
+      <turningDirection>cw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>10</maxRotVelocity>
+      <motorConstant>2.44858e-05</motorConstant>
+      <momentConstant>0.016</momentConstant>
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorNumber>2</motorNumber>
+      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+      <motorType>velocity</motorType>
+    </plugin>
+    
+    <plugin filename="ignition-gazebo-multicopter-motor-model-system" name="gz::sim::systems::MulticopterMotorModel">
+      <jointName>base_link_wing_2</jointName>
+      <linkName>wing_2</linkName>
+      <turningDirection>cw</turningDirection>
+      <timeConstantUp>0.0125</timeConstantUp>
+      <timeConstantDown>0.025</timeConstantDown>
+      <maxRotVelocity>10</maxRotVelocity>
+      <motorConstant>2.44858e-05</motorConstant>
+      <momentConstant>0.016</momentConstant>
+      <commandSubTopic>command/motor_speed</commandSubTopic>
+      <motorNumber>3</motorNumber>
+      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+      <motorType>velocity</motorType>
+    </plugin>
+    
+		    <!-- Hydrodynamics plugin -->
+		<plugin
+		    filename="libgz-waves1-hydrodynamics-system.so"
+		    name="gz::sim::systems::Hydrodynamics">
+		    
+		    <enable>boat_0::base_link</enable>
+		    <enable>boat_0::rudder_1</enable>
+		    <enable>boat_0::rudder_2</enable>
+
+		    <!-- <enable>wam-v::left_engine_link</enable>
+		    <enable>wam-v::left_propeller_link</enable>
+		    <enable>wam-v::right_engine_link</enable>
+		    <enable>wam-v::right_propeller_link</enable> -->
+
+		    <hydrodynamics>
+		      <damping_on>1</damping_on>
+		      <viscous_drag_on>1</viscous_drag_on>
+		      <pressure_drag_on>1</pressure_drag_on>
+		    
+		      <!-- Linear and Angular Damping -->
+		      <cDampL1>1.0E-6</cDampL1>
+		      <cDampL2>1.0E-6</cDampL2>
+		      <cDampR1>1.0E-6</cDampR1>
+		      <cDampR2>1.0E-6</cDampR2>
+		    
+		      <!-- 'Pressure' Drag -->
+		      <cPDrag1>1.0E+2</cPDrag1>
+		      <cPDrag2>1.0E+2</cPDrag2>
+		      <fPDrag>0.4</fPDrag>
+		      <cSDrag1>1.0E+2</cSDrag1>
+		      <cSDrag2>1.0E+2</cSDrag2>
+		      <fSDrag>0.4</fSDrag>
+		      <vRDrag>1.0</vRDrag>
+		    </hydrodynamics>
+		</plugin>
+  </model>
+</sdf>
